@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¡Tu Tarot Extrovertido!</title>
+<title>🔮 Tarot Extrovertido 🔮</title>
 <style>
   body {
     margin: 0;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     background: linear-gradient(135deg, #4b0082, #000000);
     cursor: url('https://i.imgur.com/mzS1a8M.jpeg') 16 16, auto;
     font-family: 'Arial', sans-serif;
@@ -19,17 +19,17 @@
     position: relative;
     z-index: 10;
     text-align: center;
-    padding: 50px 20px;
+    padding: 50px 20px 20px 20px;
   }
 
   h1 {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 10px #ff00ff;
   }
 
   p {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-bottom: 40px;
     text-shadow: 1px 1px 5px #ff00ff;
   }
@@ -37,14 +37,14 @@
   .secciones {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 80px;
   }
 
   .tarot-interactivo {
-    width: 150px;
-    height: 250px;
+    width: 120px;
+    height: 200px;
     perspective: 1000px;
     cursor: pointer;
   }
@@ -85,13 +85,14 @@
     text-align: center;
     padding: 10px;
     font-weight: bold;
+    font-size: 0.9em;
   }
 
-  /* Cartas cayendo de fondo */
+  /* Cartas cayendo */
   .tarot-card {
     position: absolute;
-    width: 120px;
-    height: 200px;
+    width: 100px;
+    height: 160px;
     background-size: cover;
     border-radius: 10px;
     opacity: 0.9;
@@ -104,8 +105,8 @@
     bottom: 20px;
     right: 20px;
     z-index: 15;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
   }
   #whatsapp-bubble img {
@@ -115,15 +116,16 @@
 
   #whatsapp-message {
     position: fixed;
-    bottom: 90px;
+    bottom: 80px;
     right: 20px;
     background: #25D366;
     color: #fff;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 20px;
     z-index: 15;
     opacity: 1;
     transition: opacity 0.5s;
+    font-size: 0.9em;
   }
 
   /* Redes sociales botones vacíos */
@@ -133,16 +135,27 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 15px;
+    gap: 12px;
     z-index: 15;
   }
   .redes button {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: none;
     background: #fff;
     cursor: pointer;
+  }
+
+  /* Responsivo */
+  @media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    p { font-size: 1em; }
+    .tarot-interactivo { width: 100px; height: 170px; }
+    .tarot-back { font-size: 0.8em; }
+    .tarot-card { width: 80px; height: 130px; }
+    #whatsapp-bubble { width: 40px; height: 40px; }
+    #whatsapp-message { font-size: 0.8em; }
   }
 </style>
 </head>
@@ -237,6 +250,14 @@
     }
     caer();
   }
+
+  // Ajustar cartas al resize
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.tarot-card').forEach(card => {
+      let left = parseFloat(card.style.left);
+      if(left > window.innerWidth - 100) card.style.left = `${window.innerWidth - 120}px`;
+    });
+  });
 </script>
 
 </body>
