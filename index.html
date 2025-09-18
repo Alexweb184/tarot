@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Tu Tarot Extrovertido!</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #4b0082, #000000);
+    cursor: url('https://i.imgur.com/mzS1a8M.jpeg') 16 16, auto;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px #ff00ff;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 5px #ff00ff;
+  }
+
+  .secciones {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .tarot-interactivo {
+    width: 150px;
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .tarot-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .tarot-interactivo:hover .tarot-inner {
+    transform: rotateY(180deg);
+  }
+
+  .tarot-front, .tarot-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff00ff;
+  }
+
+  .tarot-front {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .tarot-back {
+    background: rgba(255, 0, 255, 0.9);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  /* Cartas cayendo de fondo */
+  .tarot-card {
+    position: absolute;
+    width: 120px;
+    height: 200px;
+    background-size: cover;
+    border-radius: 10px;
+    opacity: 0.9;
+    z-index: 5;
+  }
+
+  /* WhatsApp */
+  #whatsapp-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 15;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  #whatsapp-bubble img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #whatsapp-message {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #25D366;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    z-index: 15;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+
+  /* Redes sociales botones vacíos */
+  .redes {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 15;
+  }
+  .redes button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="contenido">
+  <h1>🔮 ¡Bienvenido a tu Tarot Extrovertido! 🔮</h1>
+  <p>Explora tu futuro con las cartas mágicas: Amor, Dinero y General.</p>
+
+  <div class="secciones">
+    <div class="tarot-interactivo">
+      <div class="tarot-inner">
+        <div class="tarot-front" style="background-image: url('https://i.imgur.com/CKKn3d9.jpeg')"></div>
+        <div class="tarot-back">Amor: Descubre tu destino romántico 💖</div>
+      </div>
+    </div>
+
+    <div class="tarot-interactivo">
+      <div class="tarot-inner">
+        <div class="tarot-front" style="background-image: url('https://i.imgur.com/1QxiCtH.jpeg')"></div>
+        <div class="tarot-back">Dinero: Consejos para tu prosperidad 💰</div>
+      </div>
+    </div>
+
+    <div class="tarot-interactivo">
+      <div class="tarot-inner">
+        <div class="tarot-front" style="background-image: url('https://i.imgur.com/wZc1EBV.jpeg')"></div>
+        <div class="tarot-back">General: Predicciones y consejos diarios 🔮</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp -->
+<div id="whatsapp-bubble" onclick="openWhatsApp()" aria-label="Contacto WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</div>
+<div id="whatsapp-message">Puedes contactarnos</div>
+
+<!-- Redes sociales -->
+<div class="redes">
+  <button></button>
+  <button></button>
+  <button></button>
+</div>
+
+<script>
+  // WhatsApp
+  function openWhatsApp() {
+    const phoneNumber = '8129173878';
+    const url = `https://wa.me/52${phoneNumber}`;
+    window.open(url, '_blank');
+  }
+
+  // Ocultar mensaje después de 5s
+  setTimeout(() => {
+    const msg = document.getElementById('whatsapp-message');
+    if (msg) {
+      msg.style.opacity = '0';
+      setTimeout(() => { msg.style.display = 'none'; }, 500);
+    }
+  }, 5000);
+
+  // Cartas cayendo
+  const cartasFondo = [
+    'https://i.imgur.com/CKKn3d9.jpeg',
+    'https://i.imgur.com/1QxiCtH.jpeg',
+    'https://i.imgur.com/wZc1EBV.jpeg'
+  ];
+
+  const numCartas = 20;
+
+  for (let i=0; i<numCartas; i++){
+    const div = document.createElement('div');
+    div.className = 'tarot-card';
+    div.style.backgroundImage = `url(${cartasFondo[Math.floor(Math.random()*cartasFondo.length)]})`;
+    div.style.left = `${Math.random()*window.innerWidth}px`;
+    div.style.top = `-${Math.random()*300}px`;
+    div.style.transform = `rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(div);
+
+    const velocidad = 1 + Math.random()*3;
+    let top = parseFloat(div.style.top);
+    function caer(){
+      top += velocidad;
+      div.style.top = top+'px';
+      if(top < window.innerHeight - 100){
+        requestAnimationFrame(caer);
+      } else {
+        div.style.top = (window.innerHeight - 100)+'px';
+      }
+    }
+    caer();
+  }
+</script>
+
+</body>
+</html>
