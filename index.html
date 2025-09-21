@@ -47,7 +47,7 @@
   }
 
   .tarot-interactivo {
-    width: 130px; height: 210px;
+    width: 150px; height: 230px;
     perspective: 1000px;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -69,43 +69,31 @@
     position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden; border-radius: 12px;
     box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000; border: 2px solid #FFD700;
+    display: flex; align-items: center; justify-content: center; 
+    text-align: center; padding: 12px;
+    font-weight: bold;
   }
 
   .tarot-front {
-    background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #8B0000, #FFD700);
+    color: #000;
+    flex-direction: column;
   }
 
   .tarot-back {
-    background: linear-gradient(135deg, #8B0000, #FFD700);
-    color: #000; display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 12px; font-weight: bold; transform: rotateY(180deg);
+    background: linear-gradient(135deg, #FFD700, #8B0000);
+    color: #000; 
+    transform: rotateY(180deg);
     font-size: 0.9em;
   }
 
-  /* Servicios solo texto */
+  /* Servicios sección */
   .servicios {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
     margin-bottom: 60px;
-  }
-
-  .servicio-card {
-    background: linear-gradient(135deg, #8B0000, #FFD700);
-    color: #000;
-    width: 90%;
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000;
-    transition: transform 0.3s ease;
-  }
-
-  .servicio-card:hover {
-    transform: translateY(-5px) scale(1.02);
   }
 
   .info, .ubicacion {
@@ -136,9 +124,8 @@
   }
 
   @media (max-width: 768px) {
-    .tarot-interactivo { width: 100px; height: 170px; }
+    .tarot-interactivo { width: 120px; height: 190px; }
     .decorativas img { width: 120px; }
-    .servicio-card { width: 95%; }
   }
 </style>
 </head>
@@ -151,31 +138,86 @@
 <div class="secciones fade-in">
   <div class="tarot-interactivo">
     <div class="tarot-inner">
-      <div class="tarot-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
+      <div class="tarot-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg'); background-size:cover;"></div>
       <div class="tarot-back">Amor: Descubre tu destino romántico 💖</div>
     </div>
   </div>
   <div class="tarot-interactivo">
     <div class="tarot-inner">
-      <div class="tarot-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
+      <div class="tarot-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg'); background-size:cover;"></div>
       <div class="tarot-back">Dinero: Consejos para tu prosperidad 💰</div>
     </div>
   </div>
   <div class="tarot-interactivo">
     <div class="tarot-inner">
-      <div class="tarot-front" style="background-image: url('https://i.imgur.com/lhzZuRC.jpeg')"></div>
+      <div class="tarot-front" style="background-image: url('https://i.imgur.com/lhzZuRC.jpeg'); background-size:cover;"></div>
       <div class="tarot-back">General: Predicciones y consejos diarios 🔮</div>
     </div>
   </div>
 </div>
 
+<!-- Servicios -->
 <h2 class="fade-in">Servicios</h2>
 <div class="servicios fade-in">
-  <div class="servicio-card">$300 Lectura de cartas tarot egipcio</div>
-  <div class="servicio-card">$250 Veladoras preparadas</div>
-  <div class="servicio-card">$1,000 Rituales de amarre y curación</div>
-  <div class="servicio-card">$600 Cuarzo para suerte, amor, protección y abundancia</div>
-  <div class="servicio-card">$1,500 Amarre y endulzamiento</div>
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front">
+        <h3>$300</h3>
+        <p>Lectura de cartas tarot egipcio</p>
+      </div>
+      <div class="tarot-back">
+        Sesión personalizada para responder tus dudas con el tarot egipcio.
+      </div>
+    </div>
+  </div>
+
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front">
+        <h3>$250</h3>
+        <p>Veladoras preparadas</p>
+      </div>
+      <div class="tarot-back">
+        Veladoras energéticas consagradas para amor, dinero y protección.
+      </div>
+    </div>
+  </div>
+
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front">
+        <h3>$1,000</h3>
+        <p>Rituales de amarre y curación</p>
+      </div>
+      <div class="tarot-back">
+        Trabajos espirituales para unir parejas o sanar energías dañadas.
+      </div>
+    </div>
+  </div>
+
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front">
+        <h3>$600</h3>
+        <p>Cuarzo suerte, amor, protección</p>
+      </div>
+      <div class="tarot-back">
+        Cuarzos energizados para atraer fortuna, protección y armonía.
+      </div>
+    </div>
+  </div>
+
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front">
+        <h3>$1,500</h3>
+        <p>Amarre y endulzamiento</p>
+      </div>
+      <div class="tarot-back">
+        Endulzamiento para suavizar el carácter y atraer la unión amorosa.
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="info fade-in">
