@@ -7,244 +7,226 @@
 <style>
   body {
     margin: 0;
-    height: 100vh;
-    overflow-x: hidden;
-    background: linear-gradient(135deg, #000000, #8B0000, #FFD700);
-    background-attachment: fixed;
-    cursor: url('https://i.imgur.com/mzS1a8M.jpeg') 16 16, auto;
     font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #000000, #8B0000, #FFD700);
     color: #fff;
+    overflow-x: hidden;
   }
 
-  .contenido {
-    position: relative;
-    z-index: 10;
+  h1, h2 {
     text-align: center;
-    padding: 50px 20px 20px 20px;
-  }
-
-  .header-simbolos {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 20px;
-  }
-
-  .simbolo {
-    width: 120px;
-    height: auto;
-    filter: drop-shadow(0 0 15px #FFD700);
-  }
-
-  .mano-fatima {
-    width: 100px;
-    height: auto;
-    filter: drop-shadow(0 0 15px #FFD700);
-    margin: 0 auto 20px auto;
-  }
-
-  h1 {
-    font-size: 3.2em;
-    margin-bottom: 10px;
     color: #FFD700;
     text-shadow: 0 0 15px #DAA520, 2px 2px 20px #FF4500;
-    font-family: 'Papyrus', 'Arial Black', sans-serif;
-    letter-spacing: 2px;
   }
 
   p {
-    font-size: 1.3em;
-    margin-bottom: 40px;
-    text-shadow: 0 0 8px #FF6347, 1px 1px 5px #FFD700;
+    text-align: center;
     color: #F5DEB3;
+    font-size: 1.1em;
+    line-height: 1.5em;
   }
 
-  .secciones {
+  /* Animaciones */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Tarot y Servicios */
+  .secciones, .servicios {
     display: flex;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
   }
 
-  .tarot-interactivo {
-    width: 130px;
-    height: 210px;
+  .tarot-interactivo, .servicio-card {
+    width: 130px; height: 210px;
     perspective: 1000px;
     cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
-  .tarot-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+  .tarot-inner, .servicio-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.8s; transform-style: preserve-3d;
   }
 
-  .tarot-interactivo:hover .tarot-inner {
+  /* Rebote al hover */
+  .tarot-interactivo:hover, .servicio-card:hover {
+    transform: translateY(-10px) scale(1.05);
+  }
+
+  .tarot-interactivo:hover .tarot-inner, .servicio-card:hover .servicio-inner {
     transform: rotateY(180deg);
   }
 
-  .tarot-front, .tarot-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000;
-    border: 2px solid #FFD700;
+  .tarot-front, .tarot-back, .servicio-front, .servicio-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 12px;
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000; border: 2px solid #FFD700;
   }
 
-  .tarot-front {
-    background-size: cover;
-    background-position: center;
+  .tarot-front, .servicio-front {
+    background-size: cover; background-position: center;
   }
 
-  .tarot-back {
+  .tarot-back, .servicio-back {
     background: linear-gradient(135deg, #8B0000, #FFD700);
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotateY(180deg);
-    text-align: center;
-    padding: 12px;
-    font-weight: bold;
-    font-size: 1em;
-    border: 2px solid #000;
-  }
-
-  /* WhatsApp */
-  #whatsapp-bubble {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 15;
-    width: 55px;
-    height: 55px;
-    cursor: pointer;
-  }
-  #whatsapp-bubble img {
-    width: 100%;
-    height: 100%;
-  }
-
-  #whatsapp-message {
-    position: fixed;
-    bottom: 85px;
-    right: 20px;
-    background: #25D366;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 20px;
-    z-index: 15;
-    opacity: 1;
-    transition: opacity 0.5s;
+    color: #000; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 12px; font-weight: bold; transform: rotateY(180deg);
     font-size: 0.9em;
   }
 
-  .redes {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 14px;
-    z-index: 15;
+  /* Sección info */
+  .info {
+    padding: 40px 20px;
+    text-align: center;
   }
-  .redes button {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: none;
-    background: #FFD700;
-    cursor: pointer;
-    box-shadow: 0 0 10px #8B0000;
+
+  /* Maps */
+  .ubicacion { padding: 40px 20px; text-align: center; }
+  .ubicacion iframe { width: 90%; height: 400px; border:0; }
+
+  /* Imágenes decorativas grandes al fondo */
+  .decorativas {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px 0;
+  }
+  .decorativas img {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 0 30px #FFD700);
+  }
+
+  /* Botón audio */
+  #btn-audio {
+    position: fixed; bottom: 20px; left: 20px; z-index: 20;
+    padding: 10px 15px; border:none; border-radius:8px;
+    background:#FFD700; color:#000; cursor:pointer;
+    font-weight:bold;
   }
 
   @media (max-width: 768px) {
-    .header-simbolos {
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .simbolo, .mano-fatima {
-      width: 80px;
-    }
-    h1 { font-size: 2.5em; }
-    p { font-size: 1.1em; }
+    .tarot-interactivo, .servicio-card { width: 100px; height: 170px; }
+    .decorativas img { width: 120px; }
   }
 </style>
 </head>
 <body>
 
-<div class="contenido">
+<h1 class="fade-in">🔱 Tarot Centro Espiritual 🔱</h1>
+<p class="fade-in">Conecta con la sabiduría ancestral y descubre tu destino.</p>
 
-  <!-- Header con símbolos -->
-  <div class="header-simbolos">
-    <img src="https://i.imgur.com/X1VFpWI.jpeg" alt="Ganesha" class="simbolo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Isis_%28goddess%29.png" alt="Diosa Isis" class="simbolo">
+<!-- Tarot principal -->
+<div class="secciones fade-in">
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
+      <div class="tarot-back">Amor: Descubre tu destino romántico 💖</div>
+    </div>
   </div>
-
-  <!-- Mano de Fátima -->
-  <img src="https://i.imgur.com/CYmlvz9.jpeg" alt="Mano de Fátima" class="mano-fatima">
-
-  <h1>🔱 Tarot Centro Espiritual 🔱</h1>
-  <p>Conecta con la sabiduría ancestral y descubre tu destino.</p>
-
-  <!-- Tarot Interactivo -->
-  <div class="secciones">
-    <div class="tarot-interactivo">
-      <div class="tarot-inner">
-        <div class="tarot-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
-        <div class="tarot-back">Amor: Descubre tu destino romántico 💖</div>
-      </div>
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
+      <div class="tarot-back">Dinero: Consejos para tu prosperidad 💰</div>
     </div>
-
-    <div class="tarot-interactivo">
-      <div class="tarot-inner">
-        <div class="tarot-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
-        <div class="tarot-back">Dinero: Consejos para tu prosperidad 💰</div>
-      </div>
-    </div>
-
-    <div class="tarot-interactivo">
-      <div class="tarot-inner">
-        <div class="tarot-front" style="background-image: url('https://i.imgur.com/lhzZuRC.jpeg')"></div>
-        <div class="tarot-back">General: Predicciones y consejos diarios 🔮</div>
-      </div>
+  </div>
+  <div class="tarot-interactivo">
+    <div class="tarot-inner">
+      <div class="tarot-front" style="background-image: url('https://i.imgur.com/lhzZuRC.jpeg')"></div>
+      <div class="tarot-back">General: Predicciones y consejos diarios 🔮</div>
     </div>
   </div>
 </div>
 
-<!-- WhatsApp -->
-<div id="whatsapp-bubble" onclick="openWhatsApp()" aria-label="Contacto WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<h2 class="fade-in">Servicios</h2>
+<div class="servicios fade-in">
+  <div class="servicio-card">
+    <div class="servicio-inner">
+      <div class="servicio-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
+      <div class="servicio-back">$300 Lectura de cartas tarot egipcio</div>
+    </div>
+  </div>
+  <div class="servicio-card">
+    <div class="servicio-inner">
+      <div class="servicio-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
+      <div class="servicio-back">$250 Veladoras preparadas</div>
+    </div>
+  </div>
+  <div class="servicio-card">
+    <div class="servicio-inner">
+      <div class="servicio-front" style="background-image: url('https://i.imgur.com/lhzZuRC.jpeg')"></div>
+      <div class="servicio-back">$1,000 Rituales de amarre y curación</div>
+    </div>
+  </div>
+  <div class="servicio-card">
+    <div class="servicio-inner">
+      <div class="servicio-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
+      <div class="servicio-back">$600 Cuarzo para suerte, amor, protección y abundancia</div>
+    </div>
+  </div>
+  <div class="servicio-card">
+    <div class="servicio-inner">
+      <div class="servicio-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
+      <div class="servicio-back">$1,500 Amarre y endulzamiento</div>
+    </div>
+  </div>
 </div>
-<div id="whatsapp-message">Puedes contactarnos</div>
 
-<!-- Redes sociales -->
-<div class="redes">
-  <button></button>
-  <button></button>
-  <button></button>
+<div class="info fade-in">
+  <p>Los trabajos no se cobran hasta ver resultados.</p>
+  <p>Soy consejera espiritual con más de 15 años de experiencia. Realizamos todo tipo de trabajo 100% garantizado con resultados a partir del tercer día. Podemos ofrecer lecturas de tarot, limpias, amarres, endulzamientos, etc.</p>
 </div>
+
+<div class="ubicacion fade-in">
+  <h2>Nos puedes encontrar</h2>
+  <iframe src="https://maps.app.goo.gl/FVskPb48dH8Lv3cP6"></iframe>
+</div>
+
+<div class="decorativas fade-in">
+  <img src="https://i.imgur.com/qJfYr97.jpeg" alt="Mano de Fátima">
+  <img src="https://i.imgur.com/7bVbe9f.jpeg" alt="Ganesha">
+</div>
+
+<!-- Audio de fondo -->
+<audio id="musica-fondo" autoplay loop>
+  <source src="media/egipto.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Botón de silenciar/reproducir -->
+<button id="btn-audio">🔊 Silenciar</button>
 
 <script>
-  function openWhatsApp() {
-    const phoneNumber = '8129173878';
-    const url = `https://wa.me/52${phoneNumber}`;
-    window.open(url, '_blank');
-  }
+  const audio = document.getElementById('musica-fondo');
+  const btn = document.getElementById('btn-audio');
 
-  setTimeout(() => {
-    const msg = document.getElementById('whatsapp-message');
-    if (msg) {
-      msg.style.opacity = '0';
-      setTimeout(() => { msg.style.display = 'none'; }, 500);
-    }
-  }, 5000);
+  btn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    btn.textContent = audio.muted ? '🔇 Reproducir' : '🔊 Silenciar';
+  });
+
+  // Animación al hacer scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2 };
+  const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 
 </body>
