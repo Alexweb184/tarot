@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔮 Tarot Extrovertido 🔮</title>
+<title>🔱 Tarot Centro Espiritual 🔱</title>
 <style>
   body {
     margin: 0;
     height: 100vh;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #4b0082, #000000);
+    background: linear-gradient(135deg, #000000, #8B0000, #FFD700);
+    background-attachment: fixed;
     cursor: url('https://i.imgur.com/mzS1a8M.jpeg') 16 16, auto;
     font-family: 'Arial', sans-serif;
     color: #fff;
@@ -23,28 +24,32 @@
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 3.2em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 10px #ff00ff;
+    color: #FFD700;
+    text-shadow: 0 0 15px #DAA520, 2px 2px 20px #FF4500;
+    font-family: 'Papyrus', 'Arial Black', sans-serif;
+    letter-spacing: 2px;
   }
 
   p {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-bottom: 40px;
-    text-shadow: 1px 1px 5px #ff00ff;
+    text-shadow: 0 0 8px #FF6347, 1px 1px 5px #FFD700;
+    color: #F5DEB3;
   }
 
   .secciones {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
     margin-bottom: 80px;
   }
 
   .tarot-interactivo {
-    width: 120px;
-    height: 200px;
+    width: 130px;
+    height: 210px;
     perspective: 1000px;
     cursor: pointer;
   }
@@ -53,7 +58,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.8s;
     transform-style: preserve-3d;
   }
 
@@ -66,8 +71,9 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #ff00ff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000;
+    border: 2px solid #FFD700;
   }
 
   .tarot-front {
@@ -76,27 +82,24 @@
   }
 
   .tarot-back {
-    background: rgba(255, 0, 255, 0.9);
-    color: #fff;
+    background: linear-gradient(135deg, #8B0000, #FFD700);
+    color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: rotateY(180deg);
     text-align: center;
-    padding: 10px;
+    padding: 12px;
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 1em;
+    border: 2px solid #000;
   }
 
-  /* Cartas cayendo */
-  .tarot-card {
-    position: absolute;
-    width: 100px;
-    height: 160px;
-    background-size: cover;
-    border-radius: 10px;
-    opacity: 0.9;
-    z-index: 5;
+  /* Mano de Fátima */
+  .mano-fatima {
+    width: 120px;
+    margin: 0 auto 20px auto;
+    filter: drop-shadow(0 0 15px #FFD700);
   }
 
   /* WhatsApp */
@@ -105,8 +108,8 @@
     bottom: 20px;
     right: 20px;
     z-index: 15;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     cursor: pointer;
   }
   #whatsapp-bubble img {
@@ -116,7 +119,7 @@
 
   #whatsapp-message {
     position: fixed;
-    bottom: 80px;
+    bottom: 85px;
     right: 20px;
     background: #25D366;
     color: #fff;
@@ -128,42 +131,44 @@
     font-size: 0.9em;
   }
 
-  /* Redes sociales botones vacíos */
+  /* Redes sociales */
   .redes {
     position: fixed;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 12px;
+    gap: 14px;
     z-index: 15;
   }
   .redes button {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: none;
-    background: #fff;
+    background: #FFD700;
     cursor: pointer;
+    box-shadow: 0 0 10px #8B0000;
   }
 
   /* Responsivo */
   @media (max-width: 600px) {
-    h1 { font-size: 2em; }
+    h1 { font-size: 2.2em; }
     p { font-size: 1em; }
     .tarot-interactivo { width: 100px; height: 170px; }
     .tarot-back { font-size: 0.8em; }
-    .tarot-card { width: 80px; height: 130px; }
-    #whatsapp-bubble { width: 40px; height: 40px; }
+    #whatsapp-bubble { width: 45px; height: 45px; }
     #whatsapp-message { font-size: 0.8em; }
+    .mano-fatima { width: 80px; }
   }
 </style>
 </head>
 <body>
 
 <div class="contenido">
-  <h1>🔮 ¡Bienvenido a tu Tarot Extrovertido! 🔮</h1>
-  <p>Explora tu futuro con las cartas mágicas: Amor, Dinero y General.</p>
+  <img src="URL_DE_TU_MANO_DE_FATIMA" alt="Mano de Fátima" class="mano-fatima">
+  <h1>🔱 Tarot Centro Espiritual 🔱</h1>
+  <p>Conecta con la sabiduría ancestral y descubre tu destino.</p>
 
   <div class="secciones">
     <div class="tarot-interactivo">
@@ -218,46 +223,6 @@
       setTimeout(() => { msg.style.display = 'none'; }, 500);
     }
   }, 5000);
-
-  // Cartas cayendo
-  const cartasFondo = [
-    'https://i.imgur.com/CKKn3d9.jpeg',
-    'https://i.imgur.com/1QxiCtH.jpeg',
-    'https://i.imgur.com/wZc1EBV.jpeg'
-  ];
-
-  const numCartas = 20;
-
-  for (let i=0; i<numCartas; i++){
-    const div = document.createElement('div');
-    div.className = 'tarot-card';
-    div.style.backgroundImage = `url(${cartasFondo[Math.floor(Math.random()*cartasFondo.length)]})`;
-    div.style.left = `${Math.random()*window.innerWidth}px`;
-    div.style.top = `-${Math.random()*300}px`;
-    div.style.transform = `rotate(${Math.random()*360}deg)`;
-    document.body.appendChild(div);
-
-    const velocidad = 1 + Math.random()*3;
-    let top = parseFloat(div.style.top);
-    function caer(){
-      top += velocidad;
-      div.style.top = top+'px';
-      if(top < window.innerHeight - 100){
-        requestAnimationFrame(caer);
-      } else {
-        div.style.top = (window.innerHeight - 100)+'px';
-      }
-    }
-    caer();
-  }
-
-  // Ajustar cartas al resize
-  window.addEventListener('resize', () => {
-    document.querySelectorAll('.tarot-card').forEach(card => {
-      let left = parseFloat(card.style.left);
-      if(left > window.innerWidth - 100) card.style.left = `${window.innerWidth - 120}px`;
-    });
-  });
 </script>
 
 </body>
