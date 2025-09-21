@@ -23,6 +23,27 @@
     padding: 50px 20px 20px 20px;
   }
 
+  .header-simbolos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+  }
+
+  .simbolo {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 0 15px #FFD700);
+  }
+
+  .mano-fatima {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 0 15px #FFD700);
+    margin: 0 auto 20px auto;
+  }
+
   h1 {
     font-size: 3.2em;
     margin-bottom: 10px;
@@ -95,13 +116,6 @@
     border: 2px solid #000;
   }
 
-  /* Mano de Fátima */
-  .mano-fatima {
-    width: 120px;
-    margin: 0 auto 20px auto;
-    filter: drop-shadow(0 0 15px #FFD700);
-  }
-
   /* WhatsApp */
   #whatsapp-bubble {
     position: fixed;
@@ -131,7 +145,6 @@
     font-size: 0.9em;
   }
 
-  /* Redes sociales */
   .redes {
     position: fixed;
     bottom: 10px;
@@ -151,22 +164,30 @@
     box-shadow: 0 0 10px #8B0000;
   }
 
-  /* Responsivo */
-  @media (max-width: 600px) {
-    h1 { font-size: 2.2em; }
-    p { font-size: 1em; }
-    .tarot-interactivo { width: 100px; height: 170px; }
-    .tarot-back { font-size: 0.8em; }
-    #whatsapp-bubble { width: 45px; height: 45px; }
-    #whatsapp-message { font-size: 0.8em; }
-    .mano-fatima { width: 80px; }
+  @media (max-width: 768px) {
+    .header-simbolos {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .simbolo, .mano-fatima {
+      width: 80px;
+    }
+    h1 { font-size: 2.5em; }
+    p { font-size: 1.1em; }
   }
 </style>
 </head>
 <body>
 
 <div class="contenido">
-  <img src="URL_DE_TU_MANO_DE_FATIMA" alt="Mano de Fátima" class="mano-fatima">
+
+  <div class="header-simbolos">
+    <img src="URL_DE_GANESHA_AQUI" alt="Ganesha" class="simbolo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Isis_%28goddess%29.png" alt="Diosa Isis" class="simbolo"> <!-- esta de Isis -->
+  </div>
+
+  <img src="https://www.klipartz.com/es/sticker-png-lqwgi#google_vignette" alt="Mano de Fátima" class="mano-fatima">
+
   <h1>🔱 Tarot Centro Espiritual 🔱</h1>
   <p>Conecta con la sabiduría ancestral y descubre tu destino.</p>
 
@@ -208,14 +229,12 @@
 </div>
 
 <script>
-  // WhatsApp
   function openWhatsApp() {
     const phoneNumber = '8129173878';
     const url = `https://wa.me/52${phoneNumber}`;
     window.open(url, '_blank');
   }
 
-  // Ocultar mensaje después de 5s
   setTimeout(() => {
     const msg = document.getElementById('whatsapp-message');
     if (msg) {
@@ -227,3 +246,4 @@
 
 </body>
 </html>
+
