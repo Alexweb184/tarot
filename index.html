@@ -37,8 +37,8 @@
     transform: translateY(0);
   }
 
-  /* Tarot y Servicios */
-  .secciones, .servicios {
+  /* Tarot */
+  .secciones {
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -46,55 +46,75 @@
     margin-bottom: 60px;
   }
 
-  .tarot-interactivo, .servicio-card {
+  .tarot-interactivo {
     width: 130px; height: 210px;
     perspective: 1000px;
     cursor: pointer;
     transition: transform 0.3s ease;
   }
 
-  .tarot-inner, .servicio-inner {
+  .tarot-inner {
     position: relative; width: 100%; height: 100%;
     transition: transform 0.8s; transform-style: preserve-3d;
   }
 
-  /* Rebote al hover */
-  .tarot-interactivo:hover, .servicio-card:hover {
+  .tarot-interactivo:hover {
     transform: translateY(-10px) scale(1.05);
   }
-
-  .tarot-interactivo:hover .tarot-inner, .servicio-card:hover .servicio-inner {
+  .tarot-interactivo:hover .tarot-inner {
     transform: rotateY(180deg);
   }
 
-  .tarot-front, .tarot-back, .servicio-front, .servicio-back {
+  .tarot-front, .tarot-back {
     position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden; border-radius: 12px;
     box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000; border: 2px solid #FFD700;
   }
 
-  .tarot-front, .servicio-front {
+  .tarot-front {
     background-size: cover; background-position: center;
   }
 
-  .tarot-back, .servicio-back {
+  .tarot-back {
     background: linear-gradient(135deg, #8B0000, #FFD700);
     color: #000; display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 12px; font-weight: bold; transform: rotateY(180deg);
     font-size: 0.9em;
   }
 
-  /* Sección info */
-  .info {
+  /* Servicios solo texto */
+  .servicios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 60px;
+  }
+
+  .servicio-card {
+    background: linear-gradient(135deg, #8B0000, #FFD700);
+    color: #000;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #8B0000;
+    transition: transform 0.3s ease;
+  }
+
+  .servicio-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  .info, .ubicacion {
     padding: 40px 20px;
     text-align: center;
   }
 
-  /* Maps */
-  .ubicacion { padding: 40px 20px; text-align: center; }
   .ubicacion iframe { width: 90%; height: 400px; border:0; }
 
-  /* Imágenes decorativas grandes al fondo */
   .decorativas {
     display: flex;
     justify-content: center;
@@ -116,8 +136,9 @@
   }
 
   @media (max-width: 768px) {
-    .tarot-interactivo, .servicio-card { width: 100px; height: 170px; }
+    .tarot-interactivo { width: 100px; height: 170px; }
     .decorativas img { width: 120px; }
+    .servicio-card { width: 95%; }
   }
 </style>
 </head>
@@ -150,36 +171,11 @@
 
 <h2 class="fade-in">Servicios</h2>
 <div class="servicios fade-in">
-  <div class="servicio-card">
-    <div class="servicio-inner">
-      <div class="servicio-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
-      <div class="servicio-back">$300 Lectura de cartas tarot egipcio</div>
-    </div>
-  </div>
-  <div class="servicio-card">
-    <div class="servicio-inner">
-      <div class="servicio-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
-      <div class="servicio-back">$250 Veladoras preparadas</div>
-    </div>
-  </div>
-  <div class="servicio-card">
-    <div class="servicio-inner">
-      <div class="servicio-front" style="background-image: url('https://i.imgur.com/lhzZuRC.jpeg')"></div>
-      <div class="servicio-back">$1,000 Rituales de amarre y curación</div>
-    </div>
-  </div>
-  <div class="servicio-card">
-    <div class="servicio-inner">
-      <div class="servicio-front" style="background-image: url('https://i.imgur.com/WOolvrS.jpeg')"></div>
-      <div class="servicio-back">$600 Cuarzo para suerte, amor, protección y abundancia</div>
-    </div>
-  </div>
-  <div class="servicio-card">
-    <div class="servicio-inner">
-      <div class="servicio-front" style="background-image: url('https://i.imgur.com/Q59Rukg.jpeg')"></div>
-      <div class="servicio-back">$1,500 Amarre y endulzamiento</div>
-    </div>
-  </div>
+  <div class="servicio-card">$300 Lectura de cartas tarot egipcio</div>
+  <div class="servicio-card">$250 Veladoras preparadas</div>
+  <div class="servicio-card">$1,000 Rituales de amarre y curación</div>
+  <div class="servicio-card">$600 Cuarzo para suerte, amor, protección y abundancia</div>
+  <div class="servicio-card">$1,500 Amarre y endulzamiento</div>
 </div>
 
 <div class="info fade-in">
@@ -189,7 +185,7 @@
 
 <div class="ubicacion fade-in">
   <h2>Nos puedes encontrar</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.356213748145!2d-100.16297582481815!3d25.725731177374485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662e9f860aea43b%3A0xde691f698ac107e4!2sTarot%20centro%20espiritual!5e0!3m2!1ses-419!2smx!4v1758426695073!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.356213748145!2d-100.16297582481815!3d25.725731177374485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662e9f860aea43b%3A0xde691f698ac107e4!2sTarot%20centro%20espiritual!5e0!3m2!1ses-419!2smx!4v1758426695073!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <div class="decorativas fade-in">
@@ -198,34 +194,48 @@
 </div>
 
 <!-- Audio de fondo -->
-<audio id="musica-fondo" loop autoplay muted>
+<audio id="musica-fondo" loop muted>
   <source src="media/egipto.mp3" type="audio/mpeg">
 </audio>
-
 <button id="btn-audio">🔊 Silenciar</button>
 
 <script>
-  const audio = document.getElementById('musica-fondo');
-  const btn = document.getElementById('btn-audio');
+const audio = document.getElementById('musica-fondo');
+const btn = document.getElementById('btn-audio');
 
-  btn.addEventListener('click', () => {
+// Reproducir música al primer clic en la página
+let iniciado = false;
+document.body.addEventListener('click', () => {
+  if(!iniciado){
+    audio.play().catch(()=>{});
+    iniciado = true;
+  }
+});
+
+// Botón silenciar/reproducir
+btn.addEventListener('click', () => {
+  if(audio.paused){
+    audio.play();
+    audio.muted = false;
+    btn.textContent = '🔊 Silenciar';
+  } else {
     audio.muted = !audio.muted;
     btn.textContent = audio.muted ? '🔇 Reproducir' : '🔊 Silenciar';
+  }
+});
+
+// Animación fade-in
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.2 };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
   });
-
-  // Animación al hacer scroll
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.2 };
-  const appearOnScroll = new IntersectionObserver(function(entries, observer){
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, appearOptions);
-
-  faders.forEach(fader => appearOnScroll.observe(fader));
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 
 </body>
